@@ -1,0 +1,57 @@
+﻿@model  proje15haziran.Models.Blog
+
+
+@{
+    ViewBag.Title = "Details";
+}
+<script src="https://kit.fontawesome.com/d09ae03555.js" crossorigin="anonymous"></script>
+
+<h1>@Model.Baslik</h1>
+
+<hr />
+<p>
+    <i class="fa-solid fa-clock"></i>
+    @Model.Tarih
+</p>
+<hr />
+<img src="@Model.Resim" style="max-width:850px;" />
+<hr />
+<blockquote class="blockquote">
+    <p>@Model.Aciklama</p>
+</blockquote>
+<p>@Model.Icerik</p>
+<hr />
+
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.Action("Addcomment", "Blog")
+    <p></p>
+    <hr />
+}
+else
+{
+    <div class="text-center">
+        <a> Yorum yapmak için lütfen giriş yapın</a>
+    </div>
+    <p></p>
+    <div class="text-center">
+        <a href="/Account/Login" class="btn btn-success">Login</a>
+    </div>
+    <p></p>
+
+}
+
+
+@Html.Action("Commentlist", "Blog")
+
+
+
+@section SagIcerik
+    {
+
+    @Html.Partial("Search")
+    @{Html.RenderAction("Kategorilistesi", "Category");}
+
+}
+
+

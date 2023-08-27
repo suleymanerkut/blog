@@ -1,0 +1,23 @@
+﻿@model IEnumerable<proje15haziran.Models.BlogModel>
+
+@foreach (var blog in Model)
+{
+    <div class="blog">
+        <h3 class="page-header">
+            @blog.Baslik
+        </h3>
+        <p>
+            <i class="fa-solid fa-clock"></i>
+            @blog.Tarih
+        </p>
+        <hr />
+        <img src="@blog.Resim" style="max-width:800px;max-height:250px;" />
+        <hr />
+        <p>
+            @blog.Aciklama
+        </p>
+        @Html.ActionLink("Daha Fazla...", "Details", "Blog", new { id = blog.Id }, new { @class = "btn btn-primary" })
+       
+        <hr />
+    </div>
+}

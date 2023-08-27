@@ -1,0 +1,39 @@
+﻿@model IEnumerable<proje15haziran.Models.CommentsModel>
+
+@foreach (var item in Model)
+{
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="~/tema/images/bira.png" style="max-height:70px;" class="m-auto" alt="@User.Identity.Name Avatar" />
+                <div> <h6 class="text-center"> @item.username </h6>   </div>
+            </div>
+            <div class="col-11">
+                <div class="row-11">
+                    <p>@item.comment</p>
+                </div>
+                <div class="flex-grow-1">
+                    <p>@item.date</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p></p>
+
+    if (item.username == User.Identity.Name)
+    {
+        @Html.ActionLink("Düzenle", "CommentEdit", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
+        @Html.ActionLink("Sil", "CommentDelete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+    }
+    else
+    {
+        <a class="btn btn-success">YAY</a>
+        <a class="btn btn-danger">NAY</a>
+    }
+    <p></p>
+    <hr />
+
+
+
+}

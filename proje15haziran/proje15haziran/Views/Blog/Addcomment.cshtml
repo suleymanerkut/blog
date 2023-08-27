@@ -1,0 +1,28 @@
+﻿
+<div class="comment">
+    <div class="well">
+        <h4>Yorum Yap</h4>
+        <form method="post">
+            <div class="form-group">
+                <input type="hidden" placeholder="ID" name="Blogid" value="">
+                <input type="hidden" placeholder="Kullanıcı Adı" name="username" value="@User.Identity.Name" required />
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img src="~/tema/images/bira.png" style="max-height:70px;" class="m-auto" alt="@User.Identity.Name Avatar" />
+                            <div> <h6 class="text-center"> @User.Identity.Name </h6>   </div>
+                        </div>
+                        <div class="col">
+                            <textarea class="form-control" name="comment" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p></p>
+            <button href="Blog/Details/@ViewBag.Id" type="submit" class="btn btn-primary">Gönder</button>
+        </form>
+    </div>
+</div>
+
+

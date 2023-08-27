@@ -1,0 +1,31 @@
+﻿@model IEnumerable<proje15haziran.Models.BlogModel>
+@{
+    ViewBag.Title = "Index";
+}
+<script src="https://kit.fontawesome.com/d09ae03555.js" crossorigin="anonymous"></script>
+
+<h2>Blog Listesi</h2>
+<hr />
+<p></p>
+
+
+@Html.Partial("Bloglistesi", Model)
+
+@section SagIcerik
+    {
+
+    
+
+    <p></p>
+    <hr />
+    <p></p>
+
+    @Html.Partial("Search")
+    @{Html.RenderAction("Kategorilistesi", "Category");}
+
+}
+
+
+
+
+

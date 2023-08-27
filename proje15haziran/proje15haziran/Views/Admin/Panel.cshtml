@@ -1,0 +1,52 @@
+﻿@model string
+@{
+    ViewBag.Title = "Panel";
+}
+
+
+        <div class="">
+            @if (User.Identity.IsAuthenticated)
+            {
+               
+                    <label class="label label-info">
+                        @User.Identity.Name
+                    </label>
+                  
+               
+
+                <a href="/" class="btn btn-danger">Anasayfa</a>
+                
+            }
+            else
+            {
+                <a href="/Account/Login" class="btn btn-success">Login</a>
+                <a href="/Account/Register" class="btn btn-primary">Register</a>
+            }
+
+            @if (User.IsInRole("Admin"))
+            {
+               
+                    <a href="/Blog" class="btn btn-danger">Blog Detayları</a>                                  
+                    <a href="/Category" class="btn btn-danger">Kategori Detayları</a>                                
+                    <a href="/RoleAdmin/Index" class="btn btn-danger">Rol Atama</a>                 
+                    <a href="/RoleAdmin/Create" class="btn btn-danger">Rol Oluşturma</a>                 
+                    <a href="/Admin/Index" class="btn btn-danger">Üyeler</a>
+                
+            }
+            else
+            {
+                <a href="/" class="btn btn-danger">Anasayfa</a>
+            }
+
+            <p></p>
+            <hr />
+            <p></p>
+        </div>
+
+
+   
+
+    
+
+
+

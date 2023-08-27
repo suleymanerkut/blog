@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Goblin</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Hıçkıran Goblin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Bu bir şey yapabilir</a></li>
+                            <li><a class="dropdown-item" href="#">Bu başka bir şey yapabilir</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Bu da bambaka bir şey yapabilir</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+
+                            <a class="nav-link active" aria-current="page" href="/account/profile">Profil</a>
+
+                    </li>
+                </ul>
+                <form class="d-flex">
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div>
+                            <label class="label label-info align-self-md-end">
+                                @User.Identity.Name
+                            </label>
+                        </div>
+                        <p></p>
+
+                        <a href="/Account/Logout" class="btn btn-danger">Logout</a>
+                        <a href="/Blog/Create" class="btn btn-primary">Yeni Blog</a>
+                    }
+                    else
+                    {
+                        <a href="/Account/Login" class="btn btn-success">Login</a>
+                        <a href="/Account/Register" class="btn btn-primary">Register</a>
+                    }
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a href="/Admin/Panel" class="btn btn-danger">Admin Panel</a>
+                    }
+                </form>
+
+                <form class="d-flex" role="search">
+                    <div class="input-group">
+
+                            @Html.Partial("Search")                    
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+              
+           
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/Blog/List">Bloglar</a></li>
+                </ul>
+            </div>
+ 
+
+    <div class="container body-content">
+        <div class="row">
+            @if (IsSectionDefined("SagIcerik"))
+            {
+                <div class="col-md-8">
+                    @RenderBody()
+                </div>
+                <div class="col-md-4">
+                    @RenderSection("SagIcerik")
+                </div>
+            }
+            else
+            {
+                <div class="col-md-12">
+                    @RenderBody()
+                </div>
+            }
+
+
+        </div>
+      
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
